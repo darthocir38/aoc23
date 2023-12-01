@@ -1,3 +1,5 @@
+#include <string>
+
 const std::string day01 = R"(twovgtprdzcjjzkq3ffsbcblnpq
 two8sixbmrmqzrrb1seven
 9964pfxmmr474
