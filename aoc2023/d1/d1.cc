@@ -45,9 +45,13 @@ zoneight234
     auto const nums = "0123456789";
     std::vector<std::string> const string_nums = {
         "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-    auto pos = first ? std::numeric_limits<unsigned long>::max()
-                     : std::numeric_limits<unsigned long>::min();
-    char value = 0;
+
+    auto digit_idx = first ? line.find_first_of(nums) : line.find_last_of(nums);
+    auto pos = digit_idx != std::string::npos ? digit_idx
+               : first ? std::numeric_limits<unsigned long>::max()
+                       : std::numeric_limits<unsigned long>::min();
+    char value = digit_idx != std::string::npos ? line[digit_idx] : 0;
+
     for (size_t i = 0; i < string_nums.size(); i++) {
       auto found = line.find(string_nums[i]);
       if (found == std::string::npos) {
@@ -67,23 +71,7 @@ zoneight234
       }
     }
     // std::cout << line << " : " << pos << ": " << value << std::endl;
-
-    auto digit_idx = first ? line.find_first_of(nums) : line.find_last_of(nums);
-    if (digit_idx == std::string::npos) {
-      return value;
-    }
-
-    if (first) {
-      if (digit_idx > pos) {
-        return value;
-      }
-      return line[digit_idx];
-    } else {
-      if (digit_idx < pos) {
-        return value;
-      }
-      return line[digit_idx];
-    }
+    return value;
   };
 
   auto get_num_of_line = [&](std::string const &line) {
@@ -94,7 +82,7 @@ zoneight234
     return std::stoi(std::string{get_char(line, true), get_char(line, false)});
   };
 
-  std::stringstream ss(day01);
+  std::stringstream ss(day01p2);
   std::string line;
   int sum = 0;
   while (std::getline(ss, line, '\n')) {
