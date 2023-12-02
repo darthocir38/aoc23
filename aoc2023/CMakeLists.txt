@@ -19,3 +19,4 @@ else()
 endif()
 
 add_subdirectory(d1)
+add_subdirectory(d2)
