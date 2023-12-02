@@ -2,58 +2,34 @@
 #include <iostream>
 #include <limits>
 #include <sstream>
+#include <string>
 #include <vector>
 
-void p1() {
+static auto const nums = "0123456789";
+static std::vector<std::string> const string_nums = {
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
-  /*
-  const std::string day01 = R"(1abc2
-  pqr3stu8vwx
-  a1b2c3d4e5f
-  treb7uchet)";
-  */
+unsigned p1_get_num_of_line(std::string const &line) {
 
-  auto get_num_of_line = [](std::string const &line) {
-    auto const nums = "0123456789";
-    auto first_digit = line.find_first_of(nums);
-    auto last_digit = line.find_last_of(nums);
+  auto first_digit = line.find_first_of(nums);
+  auto last_digit = line.find_last_of(nums);
 
-    return std::stoi(std::string{line[first_digit], line[last_digit]});
-  };
-
-  std::stringstream ss(day01);
-  std::string line;
-  int sum = 0;
-  while (std::getline(ss, line, '\n')) {
-    sum += get_num_of_line(line);
-  }
-
-  std::cout << sum << std::endl;
+  return std::stoi(std::string{line[first_digit], line[last_digit]});
 }
 
-void p2() {
+unsigned p2_get_num_of_line(std::string const &line) {
 
-  const std::string day01p2 = R"(two1nine
-eightwothree
-abcone2threexyz
-xtwone3four
-4nineeightseven2
-zoneight234
-7pqrstsixteen)";
-
-  auto get_char = [](std::string const &line, bool first) {
-    auto const nums = "0123456789";
-    std::vector<std::string> const string_nums = {
-        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-
+  auto get_char = [&](std::string const &line, bool first) {
     auto digit_idx = first ? line.find_first_of(nums) : line.find_last_of(nums);
+
     auto pos = digit_idx != std::string::npos ? digit_idx
                : first ? std::numeric_limits<unsigned long>::max()
                        : std::numeric_limits<unsigned long>::min();
     char value = digit_idx != std::string::npos ? line[digit_idx] : 0;
 
     for (size_t i = 0; i < string_nums.size(); i++) {
-      auto found = line.find(string_nums[i]);
+      auto found =
+          first ? line.find(string_nums[i]) : line.rfind(string_nums[i]);
       if (found == std::string::npos) {
         continue;
       }
@@ -70,26 +46,22 @@ zoneight234
         }
       }
     }
-    // std::cout << line << " : " << pos << ": " << value << std::endl;
     return value;
   };
 
-  auto get_num_of_line = [&](std::string const &line) {
-    std::cout << line << " : "
-              << std::string{get_char(line, true), get_char(line, false)}
-              << std::endl;
+  return std::stoi(std::string{get_char(line, true), get_char(line, false)});
+};
 
-    return std::stoi(std::string{get_char(line, true), get_char(line, false)});
-  };
-
-  std::stringstream ss(day01p2);
+int main() {
+  std::stringstream ss(day01);
   std::string line;
-  int sum = 0;
+  int sum_p1 = 0;
+  int sum_p2 = 0;
+
   while (std::getline(ss, line, '\n')) {
-    sum += get_num_of_line(line);
+    sum_p1 += p1_get_num_of_line(line);
+    sum_p2 += p2_get_num_of_line(line);
   }
 
-  std::cout << sum << std::endl;
+  std::cout << "p1: " << sum_p1 << " p2: " << sum_p2 << std::endl;
 }
-
-int main() { p2(); }
