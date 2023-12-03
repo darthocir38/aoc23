@@ -37,7 +37,7 @@ std::pair<std::vector<Num>, std::vector<Symbol>> get_data(std::string const& dat
     line_nr++;
     State state = State::idle;
 
-    for (auto idx = 0u; idx < line.length(); idx++) {
+    for (auto idx = 0; idx < line.length(); idx++) {
       auto c = line[idx];
 
       if (std::isdigit(c)) {
