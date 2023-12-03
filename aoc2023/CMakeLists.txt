@@ -20,3 +20,4 @@ endif()
 
 add_subdirectory(d1)
 add_subdirectory(d2)
+add_subdirectory(d3)
