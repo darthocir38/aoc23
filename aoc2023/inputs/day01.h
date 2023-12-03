@@ -1,3 +1,5 @@
+// clang-format off
+
 static constexpr auto day01 = R"(twovgtprdzcjjzkq3ffsbcblnpq
 two8sixbmrmqzrrb1seven
 9964pfxmmr474
@@ -998,3 +1000,4 @@ kdzrjbh2txzz5hbone96one
 eightoneqjvzv3
 fivetwocrhmvxqkvbeightfive1qzcxvds
 2htzsvdhvqvdjv)";
+// clang-format on

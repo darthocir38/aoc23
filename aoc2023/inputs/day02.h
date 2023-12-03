@@ -1,3 +1,5 @@
+// clang-format off
+
 static constexpr auto day02 =
     R"(Game 1: 18 red, 8 green, 7 blue; 15 red, 4 blue, 1 green; 2 green, 17 red, 6 blue; 5 green, 1 blue, 11 red; 18 red, 1 green, 14 blue; 8 blue
 Game 2: 16 blue, 12 green, 3 red; 13 blue, 2 red, 8 green; 15 green, 3 red, 16 blue
@@ -99,3 +101,4 @@ Game 97: 3 red, 1 green, 1 blue; 1 green, 3 red; 4 red, 1 green
 Game 98: 4 red, 5 green, 6 blue; 2 red, 9 green, 6 blue; 2 blue, 11 red, 14 green; 6 green, 4 blue; 11 blue, 11 red, 8 green
 Game 99: 2 green, 20 blue; 12 blue; 3 red, 12 blue; 7 blue; 3 green, 10 blue, 2 red; 3 red, 2 green
 Game 100: 2 blue, 8 green, 12 red; 2 green, 13 red; 2 red, 4 green; 2 green, 7 red; 10 green, 5 red, 1 blue)";
+// clang-format on

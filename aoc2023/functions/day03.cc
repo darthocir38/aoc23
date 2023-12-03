@@ -5,7 +5,7 @@
 #include <vector>
 #include <utility>
 
-namespace d3 {
+namespace d03 {
 
 struct Num {
   int line;
@@ -66,7 +66,7 @@ std::pair<std::vector<Num>, std::vector<Symbol>> get_data(std::string const& dat
 
 
 
-int p1(std::string const& data){
+int p1(const char* data){
   auto const& [numbers,symbols] = get_data(data);
   int sum = 0;
 
@@ -87,7 +87,7 @@ return sum;
 
 }
 
-int p2(std::string const& data)
+int p2(const char* data)
 {
   auto const& [numbers,symbols] = get_data(data);
 

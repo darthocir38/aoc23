@@ -3,10 +3,9 @@
 #include <sstream>
 #include <string>
 
+namespace d02 {
 
-namespace d2{
-
-std::pair<signed, std::string> get_game(std::string const& line) {
+std::pair<signed, std::string> get_game(std::string const &line) {
 
   auto colon_idx = line.find(':');
   auto id_str = line.substr(0, colon_idx);
@@ -57,7 +56,6 @@ signed get_number_of_line_p2(std::string const &line) {
       auto amount = std::stoi(tmp2.substr(1, split_idx));
       auto color = tmp2.substr(split_idx + 1, tmp2.length());
 
-
       requirements[color] = std::max(requirements[color], amount);
     }
   }
@@ -66,7 +64,7 @@ signed get_number_of_line_p2(std::string const &line) {
   return pwr;
 }
 
-int p1(std::string data) {
+int p1(const char* data) {
   std::stringstream ss(data);
   std::string line;
 
@@ -78,7 +76,7 @@ int p1(std::string data) {
   return sum;
 }
 
-int p2(std::string data) {
+int p2(const char* data) {
   std::stringstream ss(data);
   std::string line;
 
@@ -90,4 +88,4 @@ int p2(std::string data) {
   return sum;
 }
 
-}
+} // namespace d2

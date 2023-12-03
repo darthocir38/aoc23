@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace d1
+namespace d01
 {
 static auto const nums = "0123456789";
 static std::vector<std::string> const string_nums = {
@@ -54,7 +54,7 @@ unsigned p2_get_num_of_line(std::string const &line) {
 };
 
 
-int p1(std::string const& data)
+int p1(const char* data)
 {
   std::stringstream stream{data};
     std::string line;
@@ -65,7 +65,7 @@ int p1(std::string const& data)
   return sum;
 }
 
-int p2(std::string const& data)
+int p2(const char* data)
 {
     std::stringstream stream{data};
     std::string line;
