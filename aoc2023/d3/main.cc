@@ -32,7 +32,6 @@ std::pair<std::vector<Num>, std::vector<Symbol>> get_data(std::string const& dat
   std::string line;
 
   signed sum = 0;
-
   auto line_nr = 0;
   while (std::getline(ss, line, '\n')) {
     line_nr++;
@@ -97,8 +96,7 @@ int p2(std::string const& data)
     if (symbol.c != '*') {
       continue;
     }
-    std::cout << "process gear at " << symbol.line << ":" << symbol.start
-              << std::endl;
+
     std::vector<Num> ratios;
     for (auto const &num : numbers) {
       if (std::abs(symbol.line - num.line) > 1) {
@@ -108,7 +106,6 @@ int p2(std::string const& data)
         continue;
       }
       ratios.push_back(num);
-      std::cout << "found number:" << num.value << std::endl;
     }
     if (ratios.size() < 2) {
       continue;

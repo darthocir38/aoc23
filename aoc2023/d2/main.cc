@@ -28,14 +28,9 @@ signed get_number_of_line_p1(std::string const &line) {
     std::stringstream result(tmp);
     std::string tmp2;
     while (getline(result, tmp2, ',')) {
-      std::cout << "id: " << game_id << " a result: " << tmp2 << std::endl;
       auto split_idx = tmp2.rfind(' ');
       auto amount = std::stoi(tmp2.substr(1, split_idx));
       auto color = tmp2.substr(split_idx + 1, tmp2.length());
-
-      std::cout << "a result color: " << color << " amount: " << amount
-                << std::endl;
-
       auto limit = limits.at(color);
       if (amount > limit)
         return 0;
@@ -62,16 +57,12 @@ signed get_number_of_line_p2(std::string const &line) {
       auto amount = std::stoi(tmp2.substr(1, split_idx));
       auto color = tmp2.substr(split_idx + 1, tmp2.length());
 
-      // std::cout << "a result color: " << color << " amount: " << amount
-      //           << std::endl;
+
       requirements[color] = std::max(requirements[color], amount);
     }
   }
   auto pwr = requirements["red"] * requirements["green"] * requirements["blue"];
 
-  std::cout << game_str << " req r:" << requirements["red"]
-            << " g:" << requirements["green"] << " b:" << requirements["blue"]
-            << "pwr: " << pwr << std::endl;
   return pwr;
 }
 
