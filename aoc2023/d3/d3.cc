@@ -15,6 +15,7 @@ struct Num {
 struct Symbol {
   int line;
   int start;
+  char c;
 };
 
 enum class State { idle, number };
@@ -57,7 +58,7 @@ int main() {
       if (c == '.') {
         continue;
       } else {
-        symbols.emplace_back(line_nr, idx);
+        symbols.emplace_back(line_nr, idx, c);
       }
     }
   }
@@ -78,4 +79,32 @@ int main() {
   }
 
   std::cout << "p1: " << sum << std::endl;
+  sum = 0;
+  for (auto symbol : symbols) {
+    if (symbol.c != '*') {
+      continue;
+    }
+    std::cout << "process gear at " << symbol.line << ":" << symbol.start
+              << std::endl;
+    std::vector<Num> ratios;
+    for (auto const &num : numbers) {
+      if (std::abs(symbol.line - num.line) > 1) {
+        continue;
+      }
+      if (symbol.start < (num.start - 1) or symbol.start > (num.end + 1)) {
+        continue;
+      }
+      ratios.push_back(num);
+      std::cout << "found number:" << num.value << std::endl;
+    }
+    if (ratios.size() < 2) {
+      continue;
+    }
+    unsigned pwr = 1;
+    for (auto const &r : ratios) {
+      pwr *= std::stoi(r.value);
+    }
+    sum += pwr;
+  }
+  std::cout << "p2: " << sum << std::endl;
 }
