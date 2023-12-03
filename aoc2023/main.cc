@@ -6,7 +6,6 @@
 #include "d2/main.cc"
 #include "d3/main.cc"
 
-
 int main() {
 spdlog::info("Hello Advent of code!");
 spdlog::info("Day 1: Part 1: {} Part 2: {}",d1::p1(day01), d1::p2(day01) );
