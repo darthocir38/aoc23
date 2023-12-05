@@ -21,13 +21,16 @@ FetchContent_MakeAvailable(Catch2 spdlog)
 include(CTest)
 include(Catch)
 
+find_package(TBB REQUIRED COMPONENTS tbb)
+
+
 add_executable(aoc23 main.cc)
 target_compile_features(aoc23 PRIVATE cxx_std_23)
-target_link_libraries(aoc23 PRIVATE spdlog)
+target_link_libraries(aoc23 PRIVATE spdlog tbb)
 
 
 add_executable(tests test.cc)
 target_compile_features(tests PRIVATE cxx_std_23)
-target_link_libraries(tests PRIVATE spdlog Catch2::Catch2WithMain)
+target_link_libraries(tests PRIVATE spdlog Catch2::Catch2WithMain tbb)
 
 catch_discover_tests(tests)
