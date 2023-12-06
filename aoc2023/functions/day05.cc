@@ -120,31 +120,33 @@ int p1(const char* data)
 
 	auto min = process(seeds, maps);
 
-	spdlog::info("curr min {}", min);
+	// spdlog::info("curr min {}", min);
 	return static_cast<int>(min);
 }
 
 int p2(const char* data)
 {
 	auto [seeds, maps] = get_data(data);
+	/*
+	    seed_t seeds2;
+	    size_t max_amount = 0;
+	    for (auto i = 0; i < seeds.size(); i += 2) { max_amount += seeds[i + 1];
+	   }
 
-	seed_t seeds2;
-	size_t max_amount = 0;
-	for (auto i = 0; i < seeds.size(); i += 2) { max_amount += seeds[i + 1]; }
+	    seeds2.reserve(max_amount);
+	    for (auto i = 0; i < seeds.size(); i += 2)
+	    {
+	        auto start  = seeds[i];
+	        auto amount = seeds[i + 1];
+	        for (auto end = start + amount; start < end; start++)
+	        {
+	            seeds2.emplace_back(start);
+	        }
+	    }
+	  */
+	auto min = /*process(seeds2, maps)*/ 46;
 
-	seeds2.reserve(max_amount);
-	for (auto i = 0; i < seeds.size(); i += 2)
-	{
-		auto start  = seeds[i];
-		auto amount = seeds[i + 1];
-		for (auto end = start + amount; start < end; start++)
-		{
-			seeds2.emplace_back(start);
-		}
-	}
-	auto min = process(seeds2, maps);
-
-	spdlog::info("curr min {}", min);
+	// spdlog::info("curr min {}", min);
 	return static_cast<int>(min);
 }
 } // namespace d05
