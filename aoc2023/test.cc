@@ -113,3 +113,14 @@ humidity-to-location map:
 	REQUIRE(d05::p1(data) == 35);
 	REQUIRE(d05::p2(data) == 46);
 }
+
+TEST_CASE("D6")
+{
+	auto data =
+	    R"(Time:      7  15   30
+Distance:  9  40  200)";
+
+	spdlog::set_level(spdlog::level::debug);
+	REQUIRE(d06::p1(data) == 288);
+	REQUIRE(d06::p2(data) == 71503);
+}
